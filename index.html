@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Encriptador</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overflowContainer"> 
+        <div class="contenedor">
+            <header class="header">
+                <a href="index.html"><img src="imagenes/Vector.png" class="logo" alt="Logo"></a>
+            </header>
+    
+            <main class="usuario">
+                <textarea cols="20" rows="60" id="entradaUsuario" placeholder="Ingresa tu texto aquí"></textarea>
+                <p><img src="Imagenes/VectorexclamationMark.svg" class="exclamationMark">Solo letras minúsculas y sin
+                    acentos.</p>
+                <div class="botones">
+                    <button id="botonEncriptar" onclick="encriptar()">Encriptar</button>
+                    <button id="botonDesencriptar" onclick="desencriptar()">Desencriptar</button>
+                </div>
+            </main>
+    
+            <aside class="rectangulo">
+                <div id="pendienteTexto">
+                    <img src="imagenes/MuñecoimegenBusqueda.svg" class="muñeco" alt="Muñeco de  búsqueda">
+                    <h3>Ningún mensaje fue encontrado</h3>
+                    <p>Ingresa el texto que desees encriptar o desencriptar</p>
+                </div>
+                <div id="resultadoCuadro">
+                    <textarea rows="40" cols="10" id="resultado"></textarea>
+                    <button id="botonCopiar" onclick=copiarTexto()>Copiar</button>
+                </div>
+            </aside>
+    
+            <script>
+                var inputUx = document.getElementById("entradaUsuario");
+                var inputarray = inputUx.value.split("");
+                let mayusculasAcentos = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "á", "é", "í", "ó", "ú"];
+                inputUx.focus();
+    
+                const letters = {
+                    a: { replace: "ai", remove: 1, },
+                    e: { replace: "enter", remove: 4, },
+                    i: { replace: "imes", remove: 3, },
+                    o: { replace: "ober", remove: 3, },
+                    u: { replace: "ufat", remove: 3, }
+                }
+    
+                function encriptar() {
+                    var inputarray = inputUx.value.split("");
+                    let encontrado = false;
+    
+                    for (var letras = 0; letras < inputarray.length; letras++) {
+                        if (mayusculasAcentos.includes(inputarray[letras])) {
+                            swal('', 'Sólo se aceptan letras minúsculas y sin tildes', 'error');
+                            encontrado = true;
+                            break;
+                        }
+    
+                        if (inputarray[letras] == "a") {
+                            inputarray[letras] = letters.a.replace
+                        }
+                        else if (inputarray[letras] == "e") {
+                            inputarray[letras] = letters.e.replace
+                        }
+                        else if (inputarray[letras] == "i") {
+                            letras + 1
+                            inputarray[letras] = letters.i.replace
+                        }
+                        else if (inputarray[letras] == "o") {
+                            inputarray[letras] = letters.o.replace
+                        }
+                        else if (inputarray[letras] == "u") {
+                            inputarray[letras] = letters.u.replace
+                        }
+                    }
+    
+                    if (!encontrado) {
+                        esconderImagen();
+                        var newString = inputarray.join("");
+                        inputUx.focus();
+                        document.getElementById("resultado").value = newString;
+                    }
+                }
+    
+                function desencriptar() {
+                    var inputarray = inputUx.value.split("");
+                    let encontrado = false;
+    
+                    for (var letras = 0; letras < inputarray.length; letras++) {
+                        if (mayusculasAcentos.includes(inputarray[letras])) {
+                            swal('', 'Sólo se aceptan letras minúsculas y sin tildes', 'error');
+                            encontrado = true;
+                            break;
+                        }
+    
+                        if (inputarray[letras] == "a") {
+                            inputarray.splice(letras + 1, letters.a.remove)
+                        }
+                        else if (inputarray[letras] == "e") {
+                            inputarray.splice(letras + 1, letters.e.remove)
+                        }
+                        else if (inputarray[letras] == "i") {
+                            inputarray.splice(letras + 1, letters.i.remove)
+                        }
+                        else if (inputarray[letras] == "o") {
+                            inputarray.splice(letras + 1, letters.o.remove)
+                        }
+                        else if (inputarray[letras] == "u") {
+                            inputarray.splice(letras + 1, letters.u.remove)
+                        }
+                    }
+                    if (!encontrado) {
+                        esconderImagen();
+                        var desencriptado = inputarray.join("");
+                        inputUx.focus();
+                        document.getElementById("resultado").value = desencriptado;
+                    }
+                }
+    
+                function esconderImagen() {
+                    var displayStatus = document.getElementById("pendienteTexto");
+                    var displayStatus2 = document.getElementById("resultadoCuadro");
+    
+                    if (document.getElementById("entradaUsuario").value == "") {
+                        displayStatus.style.display = "flex";
+                        displayStatus2.style.display = "none";
+                    }
+                    else {
+                        displayStatus.style.display = "none";
+                        displayStatus2.style.display = "flex";
+                    }
+                }
+    
+                function copiarTexto() {
+                    var textoCopiado = document.getElementById("resultado");
+                    textoCopiado.select();
+                    textoCopiado.setSelectionRange(0, 99999);
+                    navigator.clipboard.writeText(textoCopiado.value);
+                    swal('', 'El texto ha sido copiado.', 'success', { button: "Continuar" });
+                }
+    
+            </script>
+        </div>
+    </div>
+    <footer class="footer">
+        <p class="autor">Creado por Lina Marcela Castro</p>
+        <p class="challenge">Challenge ONE Alura Latam<br>|2023|</p>
+    </footer>
+</body>
+
+</html>

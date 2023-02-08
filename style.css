@@ -1,0 +1,320 @@
+body{
+    background: #E9ECF8;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.overflowContainer{
+    flex: 1;
+    overflow: auto;
+    justify-items: center;
+}
+.contenedor{
+    width: 95%;
+    height: 95%;
+    display: grid;
+    grid-gap: 15px;
+    margin: 10px;
+    grid-template-columns: 10% 55% 35%;
+    grid-template-rows: 10% 90%;
+}
+.contenedor .header{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    align-self: end;
+    justify-self: center;
+    margin-top: 10%;
+}
+.usuario{
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    justify-items: stretch;
+}
+#entradaUsuario{
+    background: #E9ECF8;
+    border: none;
+    outline: none;
+    font-family: Calibri, sans-serif;;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 130%;
+    color: #0A3871;
+}
+#entradaUsuario::placeholder{
+    color:#0A3871;
+    font-family: Calibri, sans-serif;
+    font-style:normal;
+    font-weight: 200;  
+}
+#entradaUsuario + p{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    margin: 10px;
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 2em;
+    line-height: 150%;
+    color: #495057;
+    opacity: 0.8;
+}
+
+.botones{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    justify-content: space-evenly;
+    margin-bottom: 1em;
+    font-size: 1em;
+}
+#botonEncriptar{
+    padding: 24px;
+    gap: 8px;
+    background: #0A3871;
+    border-radius: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: 1s;
+    width: 40%;
+}
+#botonEncriptar:hover{
+    transform: scale(1.03);
+}
+#botonDesencriptar{
+    padding: 24px;
+    gap: 8px;
+    background: #D8DFE8;
+    border: 1px solid #0A3871;
+    border-radius: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    color: #0A3871;
+    cursor: pointer;
+    transition: 1s;
+    width: 40%;
+}
+#botonDesencriptar:hover{
+    transform: scale(1.03);
+}
+.rectangulo{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 3;
+    grid-column-end: 4; 
+    height: 85%;
+    width: 90%;
+    background: #FFFFFF;
+    box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
+    border-radius: 32px;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+#pendienteTexto{
+    margin: auto;
+    padding: 10px;
+}
+.muñeco{
+    display: flex;
+    width: 100%;
+    height: 80%;
+}
+#pendienteTexto > h3{
+    width: 90%;
+    height: 58px;
+    padding: 16px;
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: center;
+    color: #343A40;
+    align-self: stretch;
+    flex-grow: 0;
+}
+#pendienteTexto > p{
+    width: 90%;
+    height: 48px;
+    padding: 16px;
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: #495057;
+    align-self: stretch;
+}
+#resultadoCuadro{
+    display: none;
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+#resultado{
+    border: none;
+    width: 98%;
+    height: 80%;
+    margin-bottom: 1.5em;
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 130%;
+    color: #495057;
+    text-align: left;
+    outline: none;
+}
+#botonCopiar{
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 5%;
+    gap: 8px;
+    width: 75%;
+    height: 10%;
+    border: 1px solid #0A3871;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: 1s;
+}
+#botonCopiar:hover{
+    transform: scale(1.03);
+}
+.swal-text{
+    font-family: Calibri, sans-serif;
+}
+.swal-footer{
+    background-color:#D8DFE8;
+    margin-top: 32px;
+    overflow: hidden;
+}
+.swal-button {
+    padding: 7px 19px;
+    border-radius: 2px;
+    background-color:#0A3871;
+    font-family: Calibri, sans-serif;
+    font-size: 12px;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+    transition: 1s;
+  }
+.footer{
+    background-color:#0A3871;
+    font-family: Calibri, sans-serif;
+    font-size: -1em;
+    color:white;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    line-height: 1em;
+    bottom: 0;
+}
+.autor{
+    font-size: 14px;
+}
+.challenge {
+    font-size: 10px;
+}
+@media screen and (max-width: 768px){
+    .contenedor{
+        grid-gap: 10px;
+        margin: 10px;
+        grid-template-columns: 10% 55% 35%;
+        grid-template-rows: 10% 60% 30%;
+    }
+    .usuario{
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        justify-items: stretch;
+        margin: 20px 20px 20px 20px;
+    }
+    #entradaUsuario{
+        font-size: 26px;
+    }
+    #entradaUsuario::placeholder{
+        font-size: 22px; 
+    }
+    .rectangulo{
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 4;
+    }
+    .muñeco{
+        display: none;
+    }
+    /* #resultadoCuadro{
+        height:max-content;
+    } */
+    #resultado{
+        font-size: 24px;
+    }
+    #botonCopiar{
+        font-size: 1em;
+        height: 25%;
+        margin-bottom: 2%;
+    }
+}
+@media screen and (max-width: 400px){
+    #entradaUsuario{
+        font-size: 22px;
+    }
+    #entradaUsuario::placeholder{
+        font-size: 20px; 
+    }
+    .botones{
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 0;
+    }
+    #botonEncriptar{
+        width: 80%;
+        padding: 15px;
+    }
+    #botonDesencriptar{
+        width: 80%;
+        padding: 15px;
+    }
+    #pendienteTexto > h3{
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 120%;
+    }
+    #pendienteTexto > p{
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 130%;
+    }
+    #resultado{
+        font-size: 20px;
+    }
+    #botonCopiar{
+        font-size: 1em;
+        height: 20%;
+        margin-bottom: 2%;
+    }
+}
